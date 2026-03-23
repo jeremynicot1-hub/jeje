@@ -1,46 +1,21 @@
 import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { createIcons, Server, Cloud, Network, Shield, Database, Activity, Terminal, Phone, Mail, MapPin, ArrowRight, Github, Linkedin, Twitter, CheckCircle, Menu, Send, Briefcase } from 'lucide'
+import { createIcons, Server, Cloud, Network, Shield, ShieldCheck, Database, Activity, Terminal, Phone, Mail, MapPin, ArrowRight, Github, Linkedin, Twitter, CheckCircle, Menu, Send, Briefcase, Blocks, Download } from 'lucide'
 
 gsap.registerPlugin(ScrollTrigger)
 
 // --- Icon Initialization ---
 createIcons({
-  icons: { Server, Cloud, Network, Shield, Database, Activity, Terminal, Phone, Mail, MapPin, ArrowRight, Github, Linkedin, Twitter, CheckCircle, Menu, Send, Briefcase }
+  icons: { Server, Cloud, Network, Shield, ShieldCheck, Database, Activity, Terminal, Phone, Mail, MapPin, ArrowRight, Github, Linkedin, Twitter, CheckCircle, Menu, Send, Briefcase, Blocks, Download }
 })
 
 // --- DOM Elements ---
-const preloader = document.getElementById('preloader')
-const progressBar = document.querySelector('.progress-bar') as HTMLElement
+let currentLang = "fr";
 const bgCanvas = document.getElementById('bg-canvas') as HTMLCanvasElement
 const cursorGlow = document.querySelector('.cursor-glow') as HTMLElement
 
-// --- Preloader & Initial Reveal ---
-window.addEventListener('load', () => {
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.random() * 20;
-    if (progress > 100) progress = 100;
-    
-    if (progressBar) progressBar.style.width = `${progress}%`;
-    
-    if (progress === 100) {
-      clearInterval(interval);
-      setTimeout(() => {
-        gsap.to(preloader, {
-          opacity: 0,
-          duration: 1.2,
-          onComplete: () => {
-            if (preloader) preloader.style.display = 'none';
-            initHeroAnimations();
-          }
-        });
-      }, 500);
-    }
-  }, 100);
-});
-
+// --- Direct Hero Reveal (no preloader) ---
 function initHeroAnimations() {
   const tl = gsap.timeline();
   
@@ -55,6 +30,10 @@ function initHeroAnimations() {
     "-=0.6"
   );
 }
+
+window.addEventListener('load', () => {
+  initHeroAnimations();
+});
 
 // --- Custom Glow Cursor ---
 window.addEventListener('mousemove', (e) => {
@@ -137,37 +116,37 @@ initBackgroundParticles();
 // --- Content Data (Skills, Projects) ---
 const skillsData = [
   {
-    category: 'Systèmes & Infrastructure',
+    category: currentLang === 'fr' ? 'Systèmes & Infrastructure' : 'Systems & Infrastructure',
     icon: 'server',
     items: ['Windows Server', 'Linux (RHEL, Debian)', 'VMware vSphere', 'Active Directory, GPO', 'DNS / DHCP']
   },
   {
-    category: 'Cloud & Écosystème Microsoft',
+    category: currentLang === 'fr' ? 'Cloud & Écosystème Microsoft' : 'Cloud & Microsoft Ecosystem',
     icon: 'cloud',
     items: ['Microsoft 365', 'Azure AD (Entra ID)', 'Exchange Online', 'SharePoint', 'ADFS']
   },
   {
-    category: 'Réseau',
+    category: currentLang === 'fr' ? 'Réseau' : 'Network',
     icon: 'network',
     items: ['Cisco Switches & Routeurs', 'Architecture LAN / WAN', 'Firewalls', 'VPNs']
   },
   {
-    category: 'Virtualisation & Espace de travail',
+    category: currentLang === 'fr' ? 'Virtualisation & Espace de travail' : 'Virtualization & Workspace',
     icon: 'terminal', 
     items: ['Citrix Virtual Apps', 'Environnements VDI', 'Publication d\'applications']
   },
   {
-    category: 'Sauvegarde & Sécurité',
+    category: currentLang === 'fr' ? 'Sauvegarde & Sécurité' : 'Backup & Security',
     icon: 'shield',
     items: ['Veeam Backup & Replication', 'WSUS', 'Gestion des correctifs', 'Sécurité des accès']
   },
   {
-    category: 'Supervision',
+    category: currentLang === 'fr' ? 'Supervision' : 'Monitoring',
     icon: 'activity',
     items: ['Zabbix', 'Grafana', 'SNMP', 'Gestion des logs']
   },
   {
-    category: 'Automatisation & DevOps',
+    category: currentLang === 'fr' ? 'Automatisation & DevOps' : 'Automation & DevOps',
     icon: 'terminal',
     items: ['PowerShell', 'Ansible', 'Scripting Bash', 'Git', 'Outils Internes']
   }
@@ -175,18 +154,36 @@ const skillsData = [
 
 const projectsData = [
   {
-    title: 'Mise en place d’un tenant Microsoft 365 et migration de la messagerie vers Exchange Online',
-    desc: 'Conception et réalisation de la migration de l’infrastructure de messagerie vers Microsoft 365 afin de moderniser les services collaboratifs et améliorer leur disponibilité. Dans le cadre de la modernisation du système d’information, j’ai participé à la mise en place d’un tenant Microsoft 365 et à la migration de l’environnement de messagerie vers Exchange Online. La mission a consisté à préparer l’environnement cible, notamment par la configuration du tenant, la synchronisation des identités avec l’annuaire Active Directory et la préparation des services associés. J’ai ensuite planifié et réalisé la migration des boîtes aux lettres vers Exchange Online en veillant à limiter l’impact pour les utilisateurs. La mission comprenait également l’accompagnement des utilisateurs et la documentation des procédures afin de garantir une adoption fluide des nouveaux outils.',
+    title: currentLang === 'fr' ? 'Migration vers Microsoft 365 & Exchange Online' : 'Migration to Microsoft 365 & Exchange Online',
+    icon: 'cloud',
+    desc: currentLang === 'fr' ? 'Modernisation des services collaboratifs et amélioration de la disponibilité.' : 'Modernization of collaborative services and availability improvement.',
+    achievements: [
+      'Configuration globale du tenant',
+      'Synchronisation Active Directory vers Entra ID',
+      'Migration fluide des boîtes aux lettres'
+    ],
     tech: ['Microsoft 365', 'Exchange Online', 'Entra ID']
   },
   {
-    title: 'Migration et modernisation de l’infrastructure de sauvegarde vers Veeam',
-    desc: 'Pilotage du remplacement de la solution de sauvegarde existante par Veeam afin d’améliorer la fiabilité, la supervision et les capacités de restauration de l’infrastructure. Dans un contexte d’amélioration de la résilience du système d’information, j’ai été chargé de piloter le projet de remplacement de la solution de sauvegarde historique par Veeam Backup & Replication. La mission a débuté par une phase d’analyse de l’existant afin d’identifier les volumes de données à protéger. J’ai assuré la mise en œuvre de la solution Veeam, incluant la configuration des jobs de sauvegarde, la définition des stratégies de rétention et l’intégration avec l’environnement de virtualisation. Des tests de restauration ont également été réalisés afin de valider la fiabilité des sauvegardes.',
+    title: currentLang === 'fr' ? 'Modernisation de l\'infrastructure de sauvegarde avec Veeam' : 'Backup infrastructure modernization with Veeam',
+    icon: 'shield',
+    desc: currentLang === 'fr' ? 'Amélioration de la fiabilité et des capacités de restauration de l’infrastructure.' : 'Improvement of reliability and infrastructure restore capabilities.',
+    achievements: [
+      'Audit de l\'existant et définition des stratégies',
+      'Déploiement Veeam Backup & Replication',
+      'Tests de restauration concluants'
+    ],
     tech: ['Veeam Backup & Replication', 'Virtualisation', 'Plan de résilience']
   },
   {
-    title: 'Déploiement d’une plateforme de supervision et d’alerte basée sur Zabbix et Grafana',
-    desc: 'Conception et déploiement d’une solution de supervision centralisée pour améliorer la visibilité sur l’état du système d’information et anticiper les incidents. J’ai piloté la mise en place d’une solution de monitoring basée sur Zabbix pour la collecte des métriques et Grafana pour la visualisation et la création de tableaux de bord. J’ai conçu l’architecture de la plateforme de supervision et défini les indicateurs clés à surveiller. J’ai ensuite réalisé l’installation, le déploiement des agents sur les serveurs et la mise en place des règles d’alerte afin de détecter rapidement les anomalies. Cette solution a permis d’améliorer significativement la détection proactive des incidents et d’apporter une meilleure visibilité sur la performance des services.',
+    title: currentLang === 'fr' ? 'Plateforme de supervision Zabbix & Grafana' : 'Zabbix & Grafana monitoring platform',
+    icon: 'activity',
+    desc: currentLang === 'fr' ? 'Solution centralisée pour anticiper et détecter proactivement les incidents.' : 'Centralized solution to proactively anticipate and detect incidents.',
+    achievements: [
+      'Architecture complète de supervision',
+      'Mise en place des règles et alertes',
+      'Tableaux de bord sur mesure (Grafana)'
+    ],
     tech: ['Zabbix', 'Grafana', 'Linux']
   }
 ];
@@ -219,11 +216,17 @@ function renderProjects() {
     const el = document.createElement('div');
     el.className = 'project-card gs-reveal-project';
     el.innerHTML = `
+      <div class="project-icon-box">
+        <i data-lucide="${proj.icon}"></i>
+      </div>
       <div class="project-content w-full">
         <h3>${proj.title}</h3>
-        <p>${proj.desc}</p>
+        <p class="project-summary">${proj.desc}</p>
+        <ul class="project-achievements">
+          ${proj.achievements.map(a => `<li><i data-lucide="check-circle" class="icon-accent icon-sm"></i> ${a}</li>`).join('')}
+        </ul>
         <div class="project-tech">
-          ${proj.tech.map(t => `<span class="tech-item"><i data-lucide="check-circle" class="icon-accent icon-sm"></i> ${t}</span>`).join('')}
+          ${proj.tech.map(t => `<span class="tech-item">${t}</span>`).join('')}
         </div>
       </div>
     `;
@@ -235,9 +238,12 @@ function renderProjects() {
 renderSkills();
 renderProjects();
 
+// Set initial hidden state for animated cards before creating ScrollTriggers
+gsap.set('.skill-category', { opacity: 0, y: 50 });
+
 // Re-init lucide icons for dynamically added elements
 createIcons({
-  icons: { Server, Cloud, Network, Shield, Database, Activity, Terminal, Phone, Mail, MapPin, ArrowRight, Github, Linkedin, Twitter, CheckCircle, Menu, Send, Briefcase }
+  icons: { Server, Cloud, Network, Shield, ShieldCheck, Database, Activity, Terminal, Phone, Mail, MapPin, ArrowRight, Github, Linkedin, Twitter, CheckCircle, Menu, Send, Briefcase, Blocks, Download }
 });
 
 // --- Scroll Animations (GSAP) ---
@@ -254,7 +260,17 @@ const initScrollAnimations = () => {
     ScrollTrigger.create({
       trigger: elem,
       start: 'top 85%',
-      animation: gsap.from(elem, { opacity: 0, y: 30, duration: 1.2, ease: 'power3.out' })
+      toggleActions: 'play none none none',
+      animation: gsap.from(elem, { opacity: 0, y: 50, duration: 1.2, ease: 'power3.out' })
+    });
+  });
+
+  gsap.utils.toArray('.gs-reveal-fast').forEach((elem: any) => {
+    ScrollTrigger.create({
+      trigger: elem,
+      start: 'top 85%',
+      toggleActions: 'play none none none',
+      animation: gsap.from(elem, { opacity: 0, y: 50, duration: 1.2, ease: 'power3.out' })
     });
   });
 
@@ -279,18 +295,19 @@ const initScrollAnimations = () => {
     });
   });
 
-  gsap.utils.toArray('.gs-reveal-skill').forEach((elem: any) => {
-    ScrollTrigger.create({
-      trigger: elem,
-      start: 'top 90%',
-      animation: gsap.from(elem, { opacity: 0, y: 40, duration: 1.2, ease: 'power3.out' })
-    });
+  // Skill cards via ScrollTrigger on container (already have gsap.set initial state)
+  ScrollTrigger.create({
+    trigger: '#skills-container',
+    start: 'top 85%',
+    toggleActions: 'play none none none',
+    animation: gsap.to('.skill-category', { opacity: 1, y: 0, duration: 1.2, stagger: 0.12, ease: 'power3.out' })
   });
 
   gsap.utils.toArray('.gs-reveal-project').forEach((elem: any) => {
     ScrollTrigger.create({
       trigger: elem,
       start: 'top 85%',
+      toggleActions: 'play none none none',
       animation: gsap.from(elem, { opacity: 0, y: 50, duration: 1.2, ease: 'power3.out' })
     });
   });
@@ -300,21 +317,25 @@ const initScrollAnimations = () => {
     start: 'top 85%',
     animation: gsap.from('.gs-reveal-form', { opacity: 0, y: 50, duration: 1.5, ease: 'power3.out' })
   });
+
+  // Review cards: same timing as projects, no gs-reveal-item conflict
+  gsap.utils.toArray('.review-card').forEach((card: any) => {
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 85%',
+      toggleActions: 'play none none none',
+      animation: gsap.from(card, { opacity: 0, y: 50, duration: 1.2, ease: 'power3.out' }),
+      onEnter: () => {
+        const stars = card.querySelectorAll('.star');
+        stars.forEach((star: HTMLElement, i: number) => {
+          setTimeout(() => star.classList.add('filled'), 400 + i * 180);
+        });
+      }
+    });
+  });
 };
 
 setTimeout(initScrollAnimations, 200);
-
-// --- Navbar Scroll Logic ---
-const navbar = document.querySelector('.navbar') as HTMLElement;
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navbar.style.padding = '10px 0';
-    navbar.style.boxShadow = '0 10px 30px -10px rgba(0,0,0,0.5)';
-  } else {
-    navbar.style.padding = '0';
-    navbar.style.boxShadow = 'none';
-  }
-});
 
 const currentYearEl = document.getElementById('current-year');
 if (currentYearEl) currentYearEl.textContent = new Date().getFullYear().toString();
@@ -338,4 +359,42 @@ if (mobileBtn && navLinksMenu) {
       navLinksMenu.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
     }
   });
+}
+
+// --- Language Translation System ---
+const langBtn = document.querySelector('.lang-btn') as HTMLElement | null;
+
+const switchLanguage = () => {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    if(langBtn) langBtn.textContent = currentLang === 'fr' ? 'EN' : 'FR';
+    
+    // Static HTML elements
+    document.querySelectorAll<HTMLElement>('[data-en]').forEach(el => {
+        if (!el.dataset.fr) el.dataset.fr = el.innerHTML;
+        el.innerHTML = currentLang === 'fr' ? el.dataset.fr : el.dataset.en!;
+    });
+
+    // Placeholders
+    document.querySelectorAll<HTMLElement>('[data-en-placeholder]').forEach(el => {
+        if (!el.dataset.frPlaceholder) el.dataset.frPlaceholder = el.getAttribute('placeholder') || '';
+        el.setAttribute('placeholder', currentLang === 'fr' ? el.dataset.frPlaceholder : el.dataset.enPlaceholder!);
+    });
+
+    // Re-render dynamic content
+    const sc = document.getElementById('skills-container');
+    const pc = document.getElementById('projects-container');
+    if (sc) sc.innerHTML = '';
+    if (pc) pc.innerHTML = '';
+    renderSkills();
+    renderProjects();
+    
+    // Re-trigger scroll triggers for dynamic content to be revealed
+    ScrollTrigger.refresh();
+};
+
+if (langBtn) {
+    langBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchLanguage();
+    });
 }
