@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Jérémy NICOT - Administrateur Systèmes & Réseaux | Ingénieur DevOps. Supervision, Migration et Fiabilisation." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Jérémy NICOT | SysAdmin & DevOps</title>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+      <div class="preloader-content terminal-loader">
+        <div class="glitch-wrapper">
+          <h1 class="glitch" data-text="sudo systemctl start devops">sudo systemctl start devops</h1>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar"></div>
+        </div>
+        <p class="loading-text">[ OK ] Démarrage des modules système...</p>
+      </div>
+    </div>
+
+    <!-- Background Canvas for Particles -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+      <div class="container nav-container">
+        <div class="header-brand">
+          <a href="#" class="logo">
+            <span class="logo-sys">Jérémy</span><span class="logo-dev">NICOT</span>
+          </a>
+          <div class="header-availability" id="header-avail">
+            <span class="dot pulse"></span>
+            <span class="avail-text" id="header-avail-text">Disponible</span>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about" class="nav-link">Profil</a>
+          <a href="#skills" class="nav-link">Compétences</a>
+          <a href="#projects" class="nav-link">Missions</a>
+          <a href="#contact" class="btn-outline btn-sm">Contact</a>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="hero section">
+        <div class="container hero-container">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              Fiabilisation, Migration & Supervision de votre SI.
+            </h1>
+            <p class="hero-subtitle">
+              Administrateur Systèmes & Réseaux / Ingénieur DevOps Freelance.<br/>
+              J'accompagne les entreprises dans l'évolution et la résilience de leur infrastructure informatique.
+            </p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn-primary">
+                Voir mes missions
+                <i data-lucide="arrow-right" class="icon-sm"></i>
+              </a>
+              <a href="#contact" class="btn-secondary">
+                Me contacter
+              </a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="abstract-shape"></div>
+            <div class="hero-stats-floating">
+              <div class="floating-card c1">
+                <i data-lucide="terminal"></i>
+                <div>
+                  <strong>5 Ans</strong>
+                  <span>D'expérience IT</span>
+                </div>
+              </div>
+              <div class="floating-card c2">
+                <i data-lucide="briefcase"></i>
+                <div>
+                  <strong>4</strong>
+                  <span>Entreprises accompagnées</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">01. <span class="text-gradient">Profil</span></h2>
+            <div class="line"></div>
+          </div>
+          <div class="about-grid">
+            <div class="about-text">
+              <h3 class="about-heading">L'architecte de votre système d'information.</h3>
+              <p>Fort de 5 années d'expérience dans des environnements exigeants (déjà 4 belles entreprises accompagnées), je conçois, déploie et maintiens des infrastructures hautement disponibles sur lesquelles vous pouvez vous appuyer.</p>
+              <p>Mon expertise s'étend de l'administration système classique (Windows Server, Linux, VMware) jusqu'aux pratiques DevOps et d'automatisation (Ansible, PowerShell, Cloud).</p>
+              <div class="experience-highlights gs-reveal-item">
+                <div class="highlight-item">
+                  <i data-lucide="check-circle" class="icon-accent"></i>
+                  <span>Support L2/L3 & Résolution avancée d'incidents</span>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="check-circle" class="icon-accent"></i>
+                  <span>Automatisation & Optimisation des processus (DevOps)</span>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="check-circle" class="icon-accent"></i>
+                  <span>Haute Disponibilité & Supervision proactive (Zabbix)</span>
+                </div>
+              </div>
+            </div>
+            <div class="about-stats-grid gs-reveal-item">
+              <div class="stat-box">
+                <h4 class="stat-number">5<span class="plus"> Ans</span></h4>
+                <p>D'expérience globale</p>
+              </div>
+              <div class="stat-box">
+                <h4 class="stat-number">4</h4>
+                <p>Entreprises accompagnées</p>
+              </div>
+              <div class="stat-box">
+                <h4 class="stat-number">24<span class="plus">/7</span></h4>
+                <p>Fiabilité opérationnelle</p>
+              </div>
+              <div class="stat-box">
+                <h4 class="stat-number">100<span class="plus">%</span></h4>
+                <p>Engagement projets</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="skills section">
+        <div class="container">
+          <div class="section-header right">
+            <div class="line"></div>
+            <h2 class="section-title">02. <span class="text-gradient">Arsenal Technique</span></h2>
+          </div>
+          <div class="skills-wrapper" id="skills-container">
+            <!-- Dynamically populated via main.ts -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="projects section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">03. <span class="text-gradient">Missions Récentes</span></h2>
+            <div class="line"></div>
+          </div>
+          <div class="projects-flex" id="projects-container">
+            <!-- Dynamically populated via main.ts -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact & Pricing Section -->
+      <section id="contact" class="contact section">
+        <div class="container">
+          <div class="section-header right">
+            <div class="line"></div>
+            <h2 class="section-title">04. <span class="text-gradient">Contact</span></h2>
+          </div>
+          
+          <div class="contact-box">
+            <!-- Contact Info Top -->
+            <div class="contact-info">
+              <h2>Prêt à optimiser votre infrastructure ?</h2>
+              <p>Disponible pour des missions d'expertise, de l'architecture technique, et de la mise en œuvre de solutions complexes.</p>
+              
+              <div class="pricing-card gs-reveal-item" style="margin-top: 2rem;">
+                <span class="tjm-label">Taux Journalier Moyen (TJM)</span>
+                <div class="tjm-value">450€ <span class="tjm-currency">/ jour</span></div>
+                <span class="location"><i data-lucide="map-pin"></i> Rennes (ou en remote)</span>
+              </div>
+
+              <div class="contact-details gs-reveal-item" style="margin-top: 2rem;">
+                <a href="mailto:contact@jeremynicot.com" class="contact-method">
+                  <div class="icon-wrapper"><i data-lucide="mail"></i></div>
+                  <div class="method-info">
+                    <span>M'envoyer un e-mail</span>
+                    <strong>contact@jeremynicot.com</strong>
+                  </div>
+                </a>
+                <a href="tel:+33600000000" class="contact-method">
+                  <div class="icon-wrapper"><i data-lucide="phone"></i></div>
+                  <div class="method-info">
+                    <span>M'appeler directement</span>
+                    <strong>+33 6 00 00 00 00</strong>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact Form Bottom (Toujours en dernier) -->
+            <div class="form-container gs-reveal-form">
+              <h3>Ou laissez un message directement :</h3>
+              <form id="contact-form" class="modern-form" style="margin-top: 1.5rem;">
+                <div class="form-row">
+                  <div class="input-group">
+                    <label for="name">Nom / Prénom</label>
+                    <input type="text" id="name" required placeholder="Jean Dupont">
+                  </div>
+                  <div class="input-group">
+                    <label for="company">Entreprise</label>
+                    <input type="text" id="company" placeholder="Société Inc.">
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label for="email">E-mail</label>
+                  <input type="email" id="email" required placeholder="jean@entreprise.com">
+                </div>
+                <div class="input-group">
+                  <label for="message">Vos besoins</label>
+                  <textarea id="message" rows="5" required placeholder="Décrivez votre projet d'infrastructure, de migration, ou de supervision..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full">
+                  Envoyer
+                  <i data-lucide="send" class="icon-sm"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-brand">
+          <span class="logo-sys">Jérémy</span><span class="logo-dev">NICOT</span>
+          <p>Supervision & Infrastructures Scalables.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#"><i data-lucide="github"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> Jérémy NICOT. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
