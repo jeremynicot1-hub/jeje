@@ -98,7 +98,7 @@
             <div class="line"></div>
           </div>
           <div class="about-grid" style="grid-template-columns: 1fr;">
-            <div class="terminal-wrapper gs-reveal-item" style="width: 100%; max-width: 900px; margin: 0 auto;">
+            <div class="terminal-wrapper gs-reveal-item" style="width: 100%; max-width: 900px; margin: 0 auto; min-height: 380px;">
               <div class="terminal-window" style="font-size: 0.95rem;">
                 <div class="terminal-header">
                   <span class="dot red"></span>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="terminal-body" id="terminal-body">
                   <div class="term-line"><span class="prompt">&gt; root@jnicot-infra:~#</span> <span class="cmd" data-text="./presentation.sh"><span class="blinking-cursor"></span></span></div>
-                  <div class="term-output" id="term-output" style="display:none;">
+                  <div class="term-output" id="term-output" style="height: 0; overflow: hidden;">
                     <p style="color: var(--accent-cyan); margin-bottom: 16px; font-weight: 600;"><span data-en="[SYSTEM: INITIALIZING PROFILE DATA...]">[SYSTÈME : INITIALISATION DES DONNÉES...]</span></p>
                     <p><span class="term-key">Identity:</span> Jérémy Nicot</p>
                     <p><span class="term-key">Role:</span> <span data-en="Systems &amp; Network Engineer / DevOps">Ingénieur Systèmes et Réseaux / DevOps</span></p>
@@ -138,17 +138,21 @@
             <h2 class="section-title">02. <span class="text-gradient" data-en="Education">Formations</span></h2>
           </div>
           <div class="education-grid">
-            <div class="edu-card gs-reveal-fast">
+            <div class="education-timeline-line"></div>
+            <div class="edu-card">
+              <div class="edu-nav-dot"></div>
               <div class="edu-year">2019 - 2022</div>
               <h3 class="edu-degree"><span data-en="Engineer in Networks & Telecommunications">Ingénieur Réseaux et Télécommunications</span></h3>
               <div class="edu-school">ESIR Rennes (35)</div>
             </div>
-            <div class="edu-card gs-reveal-fast">
+            <div class="edu-card">
+              <div class="edu-nav-dot"></div>
               <div class="edu-year">2018 - 2019</div>
               <h3 class="edu-degree"><span data-en="Preparatory Class ATS">Classe Préparatoire ATS</span></h3>
               <div class="edu-school">Lycée Yves Thépot Quimper (29)</div>
             </div>
-            <div class="edu-card gs-reveal-fast">
+            <div class="edu-card">
+              <div class="edu-nav-dot"></div>
               <div class="edu-year">2015 - 2018</div>
               <h3 class="edu-degree"><span data-en="Associate Degree in Networks & Telecoms">DUT Réseaux et Télécommunications</span></h3>
               <div class="edu-school">IUT Lannion Lannion (22)</div>
@@ -175,7 +179,7 @@
         <div class="container">
           <div class="section-header right">
             <div class="line"></div>
-            <h2 class="section-title">04. <span class="text-gradient" data-en="My Projects">Mes Projets</span></h2>
+            <h2 class="section-title">04. <span class="text-gradient" data-en="Project Examples">Exemples de Projets</span></h2>
           </div>
           <div class="projects-flex" id="projects-container">
             <!-- Dynamically populated via main.ts -->
@@ -235,70 +239,87 @@
             <div class="line"></div>
             <h2 class="section-title">06. <span class="text-gradient" data-en="Contact">Contact</span></h2>
           </div>
-          <div class="contact-box">
-            <div class="contact-info gs-reveal-item">
-              <h2><span data-en="Ready to optimize your infrastructure?">Prêt à optimiser votre infrastructure ?</span></h2>
-              <p data-en="Available for consulting, technical architecture, and complex solution implementation.">Disponible pour des missions d'expertise, de l'architecture technique, et de la mise en œuvre de solutions complexes. </p>
-              <div class="pricing-card" style="margin-top: 2rem;">
-                <div class="tjm-row">
-                  <div>
-                    <span class="tjm-label">TJM</span>
-                    <span class="tjm-value">450<span class="tjm-currency">€/j</span></span>
+          <div class="contact-stacked-layout">
+            <!-- Part 1: Status & Pricing Banner -->
+            <div class="contact-banner gs-reveal-item">
+              <div class="banner-glow"></div>
+              <div class="banner-content">
+                <div class="banner-left">
+                  <div class="status-badge pulse-badge">
+                    <span class="dot green pulse"></span>
+                    <span data-en="Available April 20th">Disponible le 20 avril</span>
                   </div>
-                  <div class="tjm-location"><i data-lucide="map-pin"></i> Rennes &amp; Remote</div>
+                  <h2><span data-en="Ready to optimize your infrastructure?">Prêt à optimiser votre infrastructure ?</span></h2>
+                  <p data-en="Available for consulting, technical architecture, and complex solution implementation.">Disponible pour des missions d'expertise, de l'architecture technique, et de la mise en œuvre de solutions complexes.</p>
+                </div>
+                
+                <div class="banner-right">
+                  <div class="tjm-display">
+                    <span class="tjm-label" data-en="Average Daily Rate">Tarif Journalier Moyen</span>
+                    <div class="tjm-value">
+                       <span class="tjm-currency">€</span>450<span class="tjm-suffix" data-en="/day">/jour</span>
+                    </div>
+                  </div>
+                  <div class="tjm-location">
+                    <i data-lucide="map-pin"></i> 
+                    <span data-en="Rennes & Remote">Rennes &amp; Remote</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="form-container gs-reveal-form">
-              <h3><span data-en="Leave me a message:">Laissez-moi un message :</span></h3>
-              <form id="contact-form" class="modern-form" style="margin-top: 1.5rem;">
-                <div class="form-row">
-                  <div class="input-group">
-                    <label for="name" data-en="Full Name">Nom / Prénom</label>
-                    <input type="text" id="name" required data-en-placeholder="John Doe" placeholder="Jean Dupont">
+            <!-- Part 2: Form & Direct Contact -->
+            <div class="contact-action-area gs-reveal-form">
+              <div class="form-container">
+                <h3><span data-en="Leave me a message:">Laissez-moi un message :</span></h3>
+                <form id="contact-form" class="modern-form">
+                  <div class="form-row">
+                    <div class="input-group">
+                      <label for="name" data-en="Full Name">Nom / Prénom</label>
+                      <input type="text" id="name" required data-en-placeholder="John Doe" placeholder="Jean Dupont">
+                    </div>
+                    <div class="input-group">
+                      <label for="company" data-en="Company">Entreprise</label>
+                      <input type="text" id="company" data-en-placeholder="Company Inc." placeholder="Société Inc.">
+                    </div>
                   </div>
                   <div class="input-group">
-                    <label for="company" data-en="Company">Entreprise</label>
-                    <input type="text" id="company" data-en-placeholder="Company Inc." placeholder="Société Inc.">
+                    <label for="email" data-en="Email">E-mail</label>
+                    <input type="email" id="email" required placeholder="jean@entreprise.com">
                   </div>
-                </div>
-                <div class="input-group">
-                  <label for="email" data-en="Email">E-mail</label>
-                  <input type="email" id="email" required placeholder="jean@entreprise.com">
-                </div>
-                <div class="input-group">
-                  <label for="message" data-en="Your needs">Vos besoins</label>
-                  <textarea id="message" rows="5" required data-en-placeholder="Describe your infrastructure, migration, or monitoring project..." placeholder="Décrivez votre projet d'infrastructure, de migration, ou de supervision..."></textarea>
-                </div>
-                <button type="submit" class="btn-primary w-full">
-                  <span data-en="Send">Envoyer</span>
-                  <i data-lucide="send" class="icon-sm"></i>
-                </button>
-              </form>
-            </div>
-
-            <div class="or-separator">
-              <span class="or-line"></span>
-              <span class="or-text" data-en="or">ou</span>
-              <span class="or-line"></span>
-            </div>
-
-            <div class="contact-details gs-reveal-item">
-              <a href="mailto:jeremy.nicot@hotmail.com" class="contact-method">
-                <div class="icon-wrapper"><i data-lucide="mail"></i></div>
-                <div class="method-info">
-                  <span data-en="Send me an email">M'envoyer un e-mail</span>
-                  <strong>jeremy.nicot@hotmail.com</strong>
-                </div>
-              </a>
-              <a href="tel:+33631407483" class="contact-method">
-                <div class="icon-wrapper"><i data-lucide="phone"></i></div>
-                <div class="method-info">
-                  <span data-en="Call me directly">M'appeler directement</span>
-                  <strong>+33 6 31 40 74 83</strong>
-                </div>
-              </a>
+                  <div class="input-group">
+                    <label for="message" data-en="Your needs">Vos besoins</label>
+                    <textarea id="message" rows="5" required data-en-placeholder="Describe your infrastructure, migration, or monitoring project..." placeholder="Décrivez votre projet d'infrastructure, de migration, ou de supervision..."></textarea>
+                  </div>
+                  <button type="submit" class="btn-primary w-full">
+                    <span data-en="Send">Envoyer</span>
+                    <i data-lucide="send" class="icon-sm"></i>
+                  </button>
+                </form>
+              </div>
+              
+              <div class="contact-or-divider">
+                <span class="divider-line"></span>
+                <span class="divider-text" data-en="OR DIRECTLY BY">OU DIRECTEMENT PAR</span>
+                <span class="divider-line"></span>
+              </div>
+              
+              <div class="direct-methods">
+                <a href="mailto:jeremy.nicot@hotmail.com" class="huge-contact-btn">
+                  <div class="huge-icon"><i data-lucide="mail"></i></div>
+                  <div class="huge-text">
+                    <span class="huge-label" data-en="E-mail">E-mail</span>
+                    <span class="huge-value">jeremy.nicot@hotmail.com</span>
+                  </div>
+                </a>
+                <a href="tel:+33631407483" class="huge-contact-btn alternate">
+                  <div class="huge-icon"><i data-lucide="phone"></i></div>
+                  <div class="huge-text">
+                    <span class="huge-label" data-en="Phone">Téléphone</span>
+                    <span class="huge-value">+33 6 31 40 74 83</span>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>

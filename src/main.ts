@@ -118,17 +118,17 @@ const skillsData = [
   {
     category: currentLang === 'fr' ? 'Systèmes & Infrastructure' : 'Systems & Infrastructure',
     icon: 'server',
-    items: ['Windows Server', 'Linux', 'VMware', 'Active Directory', 'GPO', 'DNS/DHCP']
-  },
-  {
-    category: currentLang === 'fr' ? 'Cloud & Microsoft 365' : 'Cloud & Microsoft 365',
-    icon: 'cloud',
-    items: ['Exchange Online', 'Teams', 'SharePoint', 'Azure AD (Entra)']
+    items: ['Windows Server', 'Linux', 'Exchange 2016', 'Active Directory', 'GPO', 'DNS/DHCP']
   },
   {
     category: currentLang === 'fr' ? 'Réseau & Virtualisation' : 'Network & Virtualization',
     icon: 'network',
-    items: ['Cisco', 'Architecture LAN/WAN', 'Citrix']
+    items: ['VMware', 'Cisco', 'Architecture LAN/WAN', 'VLAN', 'TCP/IP', 'Citrix']
+  },
+  {
+    category: currentLang === 'fr' ? 'Automatisation & DevOps' : 'Automation & DevOps',
+    icon: 'terminal',
+    items: ['PowerShell', 'Ansible', 'Terraform', 'GitLab CI', 'Scripts internes']
   },
   {
     category: currentLang === 'fr' ? 'Backup & Supervision' : 'Backup & Monitoring',
@@ -136,9 +136,9 @@ const skillsData = [
     items: ['Veeam Backup', 'Zabbix', 'Grafana']
   },
   {
-    category: currentLang === 'fr' ? 'Automatisation & DevOps' : 'Automation & DevOps',
-    icon: 'terminal',
-    items: ['PowerShell', 'Ansible', 'Scripts internes']
+    category: currentLang === 'fr' ? 'Cloud & Microsoft 365' : 'Cloud & Microsoft 365',
+    icon: 'cloud',
+    items: ['Exchange Online', 'Teams', 'SharePoint', 'Azure AD (Entra)', 'GCP']
   },
   {
     category: currentLang === 'fr' ? 'Support & Process' : 'Support & Process',
@@ -246,7 +246,7 @@ const initScrollAnimations = () => {
   gsap.utils.toArray('.section-title').forEach((title: any) => {
     ScrollTrigger.create({
       trigger: title,
-      start: 'top 85%',
+      start: 'top 75%',
       animation: gsap.from(title, { opacity: 0, x: -80, duration: 1.5, ease: 'power3.out' })
     });
   });
@@ -254,7 +254,7 @@ const initScrollAnimations = () => {
   gsap.utils.toArray('.gs-reveal-item').forEach((elem: any) => {
     ScrollTrigger.create({
       trigger: elem,
-      start: 'top 85%',
+      start: 'top 75%',
       toggleActions: 'play none none none',
       animation: gsap.from(elem, { opacity: 0, y: 80, duration: 1.5, ease: 'power3.out' })
     });
@@ -262,7 +262,7 @@ const initScrollAnimations = () => {
 
   ScrollTrigger.create({
     trigger: '.terminal-window',
-    start: 'top 80%',
+    start: 'top 75%',
     onEnter: () => {
       const cmdEl = document.querySelector('.cmd') as HTMLElement;
       const outputEl = document.getElementById('term-output');
@@ -278,8 +278,16 @@ const initScrollAnimations = () => {
             clearInterval(interval);
             setTimeout(() => {
               cmdEl.innerHTML = text; // remove cursor from first line
-              outputEl.style.display = 'block';
-              gsap.fromTo(outputEl.querySelectorAll('p'), { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.2, stagger: 0.3 });
+              gsap.to(outputEl, {
+                height: 'auto',
+                duration: 2,
+                ease: 'power2.out',
+                onComplete: () => ScrollTrigger.refresh()
+              });
+              gsap.fromTo(outputEl.querySelectorAll('p, .success-text'), 
+                { opacity: 0, x: -10 }, 
+                { opacity: 1, x: 0, duration: 0.4, stagger: 0.3, ease: 'power2.out' }
+              );
             }, 400);
           }
         }, 50);
@@ -290,7 +298,7 @@ const initScrollAnimations = () => {
   gsap.utils.toArray('.gs-reveal-fast').forEach((elem: any) => {
     ScrollTrigger.create({
       trigger: elem,
-      start: 'top 85%',
+      start: 'top 75%',
       toggleActions: 'play none none none',
       animation: gsap.from(elem, { opacity: 0, y: 80, duration: 1.5, ease: 'power3.out' })
     });
@@ -320,7 +328,7 @@ const initScrollAnimations = () => {
   // Skill cards via ScrollTrigger on container (already have gsap.set initial state)
   ScrollTrigger.create({
     trigger: '#skills-container',
-    start: 'top 85%',
+    start: 'top 75%',
     toggleActions: 'play none none none',
     animation: gsap.to('.skill-category', { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, ease: 'power3.out' })
   });
@@ -328,7 +336,7 @@ const initScrollAnimations = () => {
   gsap.utils.toArray('.gs-reveal-project').forEach((elem: any) => {
     ScrollTrigger.create({
       trigger: elem,
-      start: 'top 85%',
+      start: 'top 75%',
       toggleActions: 'play none none none',
       animation: gsap.from(elem, { opacity: 0, y: 80, duration: 1.5, ease: 'power3.out' })
     });
@@ -336,15 +344,27 @@ const initScrollAnimations = () => {
   
   ScrollTrigger.create({
     trigger: '.form-container',
-    start: 'top 85%',
+    start: 'top 75%',
     animation: gsap.from('.gs-reveal-form', { opacity: 0, y: 80, duration: 1.8, ease: 'power3.out' })
   });
+  
+  // Education Timeline Custom Animation
+  const eduTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.education-grid',
+      start: 'top 75%',
+      toggleActions: 'play none none none'
+    }
+  });
+
+  eduTl.from('.education-timeline-line', { scaleY: 0, transformOrigin: 'top', opacity: 0, duration: 1.2, ease: 'power2.out', clearProps: 'transform' })
+       .from('.edu-card', { opacity: 0, y: 30, duration: 0.8, stagger: 0.3, ease: 'power3.out', clearProps: 'transform' }, "-=0.8");
 
   // Review cards: same timing as projects, no gs-reveal-item conflict
   gsap.utils.toArray('.review-card').forEach((card: any) => {
     ScrollTrigger.create({
       trigger: card,
-      start: 'top 85%',
+      start: 'top 75%',
       toggleActions: 'play none none none',
       animation: gsap.from(card, { opacity: 0, y: 80, duration: 1.5, ease: 'power3.out' }),
       onEnter: () => {
