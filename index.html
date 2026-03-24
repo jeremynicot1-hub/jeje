@@ -97,27 +97,33 @@
             <h2 class="section-title">01. <span class="text-gradient" data-en="Profile">Profil</span></h2>
             <div class="line"></div>
           </div>
-          <div class="about-grid">
-            <div class="about-text">
-              <h3 class="about-heading"><span data-en="Automating to secure: an infrastructure that makes itself forgotten.">Automatiser pour fiabiliser : une infrastructure qui se fait oublier.</span></h3>
-              <p><span data-en="With 5 years of experience in system and network administration, I am convinced that IT should be an enabler, not a bottleneck. I've seen too many teams overwhelmed by repetitive tasks instead of focusing on evolution.">Fort de 5 années d’expérience en administration systèmes et réseaux, je suis convaincu que l'informatique doit être un accélérateur, et non un frein. J'ai vu trop d'équipes se retrouver limitées par les tâches fastidieuses et répétitives au détriment de l'évolution du SI.</span></p>
-              <p><span data-en="That is why my daily work is strongly oriented towards a DevOps culture. My approach? Script the boring stuff, automate deployments, and monitor proactively. Whether modernizing aging infrastructure or migrating to the Cloud, my goal is to save you precious time while ensuring maximum resilience.">C'est pourquoi mon quotidien s'oriente résolument vers une culture de l'automatisation et des pratiques DevOps. Mon approche : scripter le répétitif (PowerShell, Ansible), centraliser l'information métier et superviser de façon proactive. De la refonte d'un environnement obsolète à la migration Cloud, mon objectif est simple : vous faire gagner un temps précieux tout en garantissant des fondations ultra-résilientes.</span></p>
-            </div>
-            <div class="about-pillars gs-reveal-item">
-              <div class="pillar-card">
-                <i data-lucide="server" class="icon-accent"></i>
-                <h4><span data-en="Systems & Virtualization">Systèmes & Virtualisation</span></h4>
-                <p><span data-en="MCO of 400+ servers (Windows/Linux). VMware vSphere & Citrix management. Active Directory governance (GPO, DNS, DHCP, DFS).">Administration et MCO de 400+ serveurs (Windows/Linux). Expertise de bout en bout VMware vSphere & Citrix. Gouvernance exhaustive de l'Active Directory et du DFS.</span></p>
-              </div>
-              <div class="pillar-card">
-                <i data-lucide="cloud" class="icon-accent"></i>
-                <h4><span data-en="Cloud & Messaging">Cloud & Messagerie</span></h4>
-                <p><span data-en="Complex migrations and administration of Microsoft 365 tenants (Exchange, Teams). On-Premise administration, federated authentication (ADFS, Entra ID).">Pilotage de migrations complexes et administration de tenants Microsoft 365 (Exchange, SharePoint, Teams). Gestion On-Premise et fédération (ADFS, Entra ID).</span></p>
-              </div>
-              <div class="pillar-card">
-                <i data-lucide="terminal" class="icon-accent"></i>
-                <h4><span data-en="Supervision & DevOps">Supervision & DevOps</span></h4>
-                <p><span data-en="Automation (PowerShell, Ansible) and internal tool development. Veeam backups. Proactive Zabbix/Grafana monitoring and Cisco (LAN/WAN) networking.">Automatisation massive (PowerShell, Ansible). MCO des sauvegardes (Veeam). Monitoring avancé (Zabbix/Grafana), gestions réseaux (Cisco) et patch management.</span></p>
+          <div class="about-grid" style="grid-template-columns: 1fr;">
+            <div class="terminal-wrapper gs-reveal-item" style="width: 100%; max-width: 900px; margin: 0 auto;">
+              <div class="terminal-window" style="font-size: 0.95rem;">
+                <div class="terminal-header">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                  <span class="terminal-title">root@jnicot-infra:~</span>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                  <div class="term-line"><span class="prompt">&gt; root@jnicot-infra:~#</span> <span class="cmd" data-text="./presentation.sh"><span class="blinking-cursor"></span></span></div>
+                  <div class="term-output" id="term-output" style="display:none;">
+                    <p style="color: var(--accent-cyan); margin-bottom: 16px; font-weight: 600;"><span data-en="[SYSTEM: INITIALIZING PROFILE DATA...]">[SYSTÈME : INITIALISATION DES DONNÉES...]</span></p>
+                    <p><span class="term-key">Identity:</span> Jérémy Nicot</p>
+                    <p><span class="term-key">Role:</span> <span data-en="Systems &amp; Network Engineer / DevOps">Ingénieur Systèmes et Réseaux / DevOps</span></p>
+                    <p><span class="term-key">Status:</span> <span data-en="Freelance - Available April 20th">Freelance - Disponible le 20 avril</span></p>
+                    <br>
+                    <p style="color: #d4d4d8; line-height: 1.6; max-width: 800px; font-family: var(--font-sans);" data-en="With several years of field experience, I assist companies in the management, evolution, and operational maintenance of their IT infrastructure (Windows, Linux, virtualization).<br><br>My &quot;DevOps&quot; approach allows me to go further than traditional administration: I automate repetitive processes to limit human risks and accelerate professional deployments.<br><br><strong style=&quot;color: #fff;&quot;>Production goal:</strong> Deliver a transparent, highly available, and secure infrastructure to effectively support your business.">
+                      Fort de plusieurs années d’expérience sur le terrain, j’accompagne les entreprises dans la gestion, l'évolution et le maintien en conditions opérationnelles de leur parc informatique (Windows, Linux, virtualisation).<br><br>
+                      Mon approche "DevOps" me permet d'aller plus loin que l'administration classique : j'automatise les processus répétitifs pour limiter les risques humains et accélérer les déploiements professionnels.<br><br>
+                      <strong style="color: #fff;">Objectif en production :</strong> Fournir une infrastructure transparente, hautement disponible et sécurisée, pour soutenir efficacement votre activité.
+                    </p>
+                    <br>
+                    <p><span class="prompt">&gt; root@jnicot-infra:~#</span> sys_status</p>
+                    <p class="success-text"><span data-en="All systems operational.">Tous les systèmes sont opérationnels.</span> <span class="blinking-cursor"></span></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -185,30 +191,37 @@
             <div class="line"></div>
           </div>
           <div class="reviews-grid">
-            <div class="review-card gs-reveal-item">
-              <div class="review-header">
-                <div>
-                  <h4 class="review-name">Vincent</h4>
-                  <span class="review-company">FULL KITE</span>
+            <div class="review-card magnetic-card">
+              <div class="magnetic-glow"></div>
+              <div class="review-content-inner">
+                <div class="review-header">
+                  <div>
+                    <h4 class="review-name">Vincent</h4>
+                    <span class="review-company">FULL KITE</span>
+                  </div>
+                  <div class="review-date">19/11/2025</div>
                 </div>
-                <div class="review-date">19/11/2025</div>
-              </div>
-              <p class="review-text">"<span data-en="Excellent work and great skills, I highly recommend">Excellent travail et bonnes compétences je recommande vivement</span>"</p>
-              <div class="review-rating">
-                <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+                <p class="review-text">"<span data-en="Excellent work and great skills, I highly recommend">Excellent travail et bonnes compétences je recommande vivement</span>"</p>
+                <div class="review-rating">
+                  <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+                </div>
               </div>
             </div>
-            <div class="review-card gs-reveal-item">
-              <div class="review-header">
-                <div>
-                  <h4 class="review-name">Marielle</h4>
-                  <span class="review-company">BIMINI CONSTRUCTION MARTINIQUE</span>
+            
+            <div class="review-card magnetic-card">
+              <div class="magnetic-glow"></div>
+              <div class="review-content-inner">
+                <div class="review-header">
+                  <div>
+                    <h4 class="review-name">Marielle</h4>
+                    <span class="review-company">BIMINI CONSTRUCTION MARTINIQUE</span>
+                  </div>
+                  <div class="review-date">28/04/2025</div>
                 </div>
-                <div class="review-date">28/04/2025</div>
-              </div>
-              <p class="review-text">"<span data-en="For our project, Jérémy showed great responsiveness and conscientious work. We are very satisfied with his service, he fully met all our expectations within the deadlines.">Pour notre projet, Jérémy a fait preuve d'une grande réactivité et d'un travail consciencieux. Nous sommes très satisfaits de sa prestation, il a répondu pleinement à toutes nos attentes dans les délais impartis.</span>"</p>
-              <div class="review-rating">
-                <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+                <p class="review-text">"<span data-en="For our project, Jérémy showed great responsiveness and conscientious work. We are very satisfied with his service, he fully met all our expectations within the deadlines.">Pour notre projet, Jérémy a fait preuve d'une grande réactivité et d'un travail consciencieux. Nous sommes très satisfaits de sa prestation, il a répondu pleinement à toutes nos attentes dans les délais impartis.</span>"</p>
+                <div class="review-rating">
+                  <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+                </div>
               </div>
             </div>
           </div>

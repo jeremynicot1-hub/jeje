@@ -118,37 +118,32 @@ const skillsData = [
   {
     category: currentLang === 'fr' ? 'Systèmes & Infrastructure' : 'Systems & Infrastructure',
     icon: 'server',
-    items: ['Windows Server', 'Linux (RHEL, Debian)', 'VMware vSphere', 'Active Directory, GPO', 'DNS / DHCP']
+    items: ['Windows Server', 'Linux', 'VMware', 'Active Directory', 'GPO', 'DNS/DHCP']
   },
   {
-    category: currentLang === 'fr' ? 'Cloud & Écosystème Microsoft' : 'Cloud & Microsoft Ecosystem',
+    category: currentLang === 'fr' ? 'Cloud & Microsoft 365' : 'Cloud & Microsoft 365',
     icon: 'cloud',
-    items: ['Microsoft 365', 'Azure AD (Entra ID)', 'Exchange Online', 'SharePoint', 'ADFS']
+    items: ['Exchange Online', 'Teams', 'SharePoint', 'Azure AD (Entra)']
   },
   {
-    category: currentLang === 'fr' ? 'Réseau' : 'Network',
+    category: currentLang === 'fr' ? 'Réseau & Virtualisation' : 'Network & Virtualization',
     icon: 'network',
-    items: ['Cisco Switches & Routeurs', 'Architecture LAN / WAN', 'Firewalls', 'VPNs']
+    items: ['Cisco', 'Architecture LAN/WAN', 'Citrix']
   },
   {
-    category: currentLang === 'fr' ? 'Virtualisation & Espace de travail' : 'Virtualization & Workspace',
-    icon: 'terminal', 
-    items: ['Citrix Virtual Apps', 'Environnements VDI', 'Publication d\'applications']
-  },
-  {
-    category: currentLang === 'fr' ? 'Sauvegarde & Sécurité' : 'Backup & Security',
+    category: currentLang === 'fr' ? 'Backup & Supervision' : 'Backup & Monitoring',
     icon: 'shield',
-    items: ['Veeam Backup & Replication', 'WSUS', 'Gestion des correctifs', 'Sécurité des accès']
-  },
-  {
-    category: currentLang === 'fr' ? 'Supervision' : 'Monitoring',
-    icon: 'activity',
-    items: ['Zabbix', 'Grafana', 'SNMP', 'Gestion des logs']
+    items: ['Veeam Backup', 'Zabbix', 'Grafana']
   },
   {
     category: currentLang === 'fr' ? 'Automatisation & DevOps' : 'Automation & DevOps',
     icon: 'terminal',
-    items: ['PowerShell', 'Ansible', 'Scripting Bash', 'Git', 'Outils Internes']
+    items: ['PowerShell', 'Ansible', 'Scripts internes']
+  },
+  {
+    category: currentLang === 'fr' ? 'Support & Process' : 'Support & Process',
+    icon: 'briefcase',
+    items: ['Support L2/L3', 'Documentation', 'Amélioration continue']
   }
 ];
 
@@ -252,7 +247,7 @@ const initScrollAnimations = () => {
     ScrollTrigger.create({
       trigger: title,
       start: 'top 85%',
-      animation: gsap.from(title, { opacity: 0, x: -50, duration: 1.2, ease: 'power3.out' })
+      animation: gsap.from(title, { opacity: 0, x: -80, duration: 1.5, ease: 'power3.out' })
     });
   });
 
@@ -261,8 +256,35 @@ const initScrollAnimations = () => {
       trigger: elem,
       start: 'top 85%',
       toggleActions: 'play none none none',
-      animation: gsap.from(elem, { opacity: 0, y: 50, duration: 1.2, ease: 'power3.out' })
+      animation: gsap.from(elem, { opacity: 0, y: 80, duration: 1.5, ease: 'power3.out' })
     });
+  });
+
+  ScrollTrigger.create({
+    trigger: '.terminal-window',
+    start: 'top 80%',
+    onEnter: () => {
+      const cmdEl = document.querySelector('.cmd') as HTMLElement;
+      const outputEl = document.getElementById('term-output');
+      if (cmdEl && outputEl && !cmdEl.classList.contains('typed')) {
+        cmdEl.classList.add('typed');
+        const text = cmdEl.getAttribute('data-text') || '';
+        let i = 0;
+        cmdEl.innerHTML = '<span class="blinking-cursor"></span>';
+        const interval = setInterval(() => {
+          cmdEl.innerHTML = text.substring(0, i + 1) + '<span class="blinking-cursor"></span>';
+          i++;
+          if (i >= text.length) {
+            clearInterval(interval);
+            setTimeout(() => {
+              cmdEl.innerHTML = text; // remove cursor from first line
+              outputEl.style.display = 'block';
+              gsap.fromTo(outputEl.querySelectorAll('p'), { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.2, stagger: 0.3 });
+            }, 400);
+          }
+        }, 50);
+      }
+    }
   });
 
   gsap.utils.toArray('.gs-reveal-fast').forEach((elem: any) => {
@@ -270,7 +292,7 @@ const initScrollAnimations = () => {
       trigger: elem,
       start: 'top 85%',
       toggleActions: 'play none none none',
-      animation: gsap.from(elem, { opacity: 0, y: 50, duration: 1.2, ease: 'power3.out' })
+      animation: gsap.from(elem, { opacity: 0, y: 80, duration: 1.5, ease: 'power3.out' })
     });
   });
 
@@ -300,7 +322,7 @@ const initScrollAnimations = () => {
     trigger: '#skills-container',
     start: 'top 85%',
     toggleActions: 'play none none none',
-    animation: gsap.to('.skill-category', { opacity: 1, y: 0, duration: 1.2, stagger: 0.12, ease: 'power3.out' })
+    animation: gsap.to('.skill-category', { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, ease: 'power3.out' })
   });
 
   gsap.utils.toArray('.gs-reveal-project').forEach((elem: any) => {
@@ -308,14 +330,14 @@ const initScrollAnimations = () => {
       trigger: elem,
       start: 'top 85%',
       toggleActions: 'play none none none',
-      animation: gsap.from(elem, { opacity: 0, y: 50, duration: 1.2, ease: 'power3.out' })
+      animation: gsap.from(elem, { opacity: 0, y: 80, duration: 1.5, ease: 'power3.out' })
     });
   });
   
   ScrollTrigger.create({
     trigger: '.form-container',
     start: 'top 85%',
-    animation: gsap.from('.gs-reveal-form', { opacity: 0, y: 50, duration: 1.5, ease: 'power3.out' })
+    animation: gsap.from('.gs-reveal-form', { opacity: 0, y: 80, duration: 1.8, ease: 'power3.out' })
   });
 
   // Review cards: same timing as projects, no gs-reveal-item conflict
@@ -324,11 +346,11 @@ const initScrollAnimations = () => {
       trigger: card,
       start: 'top 85%',
       toggleActions: 'play none none none',
-      animation: gsap.from(card, { opacity: 0, y: 50, duration: 1.2, ease: 'power3.out' }),
+      animation: gsap.from(card, { opacity: 0, y: 80, duration: 1.5, ease: 'power3.out' }),
       onEnter: () => {
         const stars = card.querySelectorAll('.star');
         stars.forEach((star: HTMLElement, i: number) => {
-          setTimeout(() => star.classList.add('filled'), 400 + i * 180);
+          setTimeout(() => star.classList.add('filled'), 600 + i * 200);
         });
       }
     });
@@ -398,3 +420,17 @@ if (langBtn) {
         switchLanguage();
     });
 }
+
+// Magnetic Card Glow Follower
+document.querySelectorAll('.magnetic-card').forEach((card: any) => {
+  card.addEventListener('mousemove', (e: any) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const glow = card.querySelector('.magnetic-glow') as HTMLElement;
+    if (glow) {
+      glow.style.left = `${x}px`;
+      glow.style.top = `${y}px`;
+    }
+  });
+});
