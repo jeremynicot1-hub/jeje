@@ -481,26 +481,49 @@ if (contactForm) {
       });
 
       if (response.ok) {
-        submitBtn.innerHTML = currentLang === 'fr' ? 'Message envoyé ! ✅' : 'Message sent! ✅';
-        submitBtn.classList.add('btn-success');
-        contactForm.reset();
+        const container = contactForm.parentElement!;
+        contactForm.style.display = 'none';
         
-        setTimeout(() => {
+        const successContainer = document.createElement('div');
+        successContainer.className = 'form-success-container';
+        successContainer.innerHTML = `
+          <div class="success-icon-wrapper">
+            <i data-lucide="check-circle"></i>
+          </div>
+          <h3>${currentLang === 'fr' ? 'Message envoyé !' : 'Message Sent!'}</h3>
+          <p>${currentLang === 'fr' ? 'Merci pour votre message. Je reviendrai vers vous très rapidement.' : 'Thank you for your message. I will get back to you very soon.'}</p>
+          <button class="btn-secondary" id="reset-form" style="width: auto;">
+            ${currentLang === 'fr' ? 'Envoyer un autre message' : 'Send another message'}
+          </button>
+        `;
+        
+        container.appendChild(successContainer);
+        
+        // Re-init icons for the newly injected element
+        const { createIcons, CheckCircle } = await import('lucide');
+        createIcons({ icons: { CheckCircle } });
+
+        const resetBtn = successContainer.querySelector('#reset-form');
+        resetBtn?.addEventListener('click', () => {
+          successContainer.remove();
+          contactForm.style.display = 'flex';
+          contactForm.reset();
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
-          submitBtn.classList.remove('btn-success');
-        }, 5000);
+        });
       } else {
         throw new Error('Submission failed');
       }
     } catch (error) {
       submitBtn.disabled = false;
       submitBtn.innerHTML = currentLang === 'fr' ? 'Erreur ❌ Réessayez' : 'Error ❌ Try again';
-      submitBtn.classList.add('btn-error');
+      submitBtn.style.borderColor = '#ef4444';
+      submitBtn.style.color = '#ef4444';
       
       setTimeout(() => {
         submitBtn.innerHTML = originalText;
-        submitBtn.classList.remove('btn-error');
+        submitBtn.style.borderColor = '';
+        submitBtn.style.color = '';
       }, 3000);
     }
   });
