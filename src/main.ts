@@ -482,7 +482,10 @@ if (contactForm) {
 
       if (response.ok) {
         const container = contactForm.parentElement!;
+        const formTitle = container.querySelector('h3');
+        
         contactForm.style.display = 'none';
+        if (formTitle) formTitle.style.display = 'none';
         
         const successContainer = document.createElement('div');
         successContainer.className = 'form-success-container';
@@ -496,14 +499,11 @@ if (contactForm) {
         
         container.appendChild(successContainer);
         
-        // Re-init icons for the newly injected element
-        const { createIcons, CheckCircle } = await import('lucide');
-        createIcons({ icons: { CheckCircle } });
-
         const resetBtn = successContainer.querySelector('#reset-form');
         resetBtn?.addEventListener('click', () => {
           successContainer.remove();
           contactForm.style.display = 'flex';
+          if (formTitle) formTitle.style.display = 'block';
           contactForm.reset();
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
