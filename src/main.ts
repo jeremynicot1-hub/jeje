@@ -149,35 +149,35 @@ const skillsData = [
 
 const projectsData = [
   {
-    title: currentLang === 'fr' ? 'Migration Microsoft 365 & Exchange' : 'Microsoft 365 & Exchange Migration',
+    title: currentLang === 'fr' ? 'Migration vers Microsoft 365 & Exchange Online' : 'Migration to Microsoft 365 & Exchange Online',
     icon: 'cloud',
-    desc: currentLang === 'fr' ? 'Modernisation complète de l\'environnement collaboratif.' : 'Full modernization of the collaborative environment.',
+    desc: currentLang === 'fr' ? 'Modernisation des services collaboratifs et amélioration de la disponibilité.' : 'Modernization of collaborative services and availability improvement.',
     achievements: [
-      'Configuration du tenant et sécurité',
-      'Synchronisation hybride (Entra ID)',
-      'Migration zero-downtime des boîtes'
+      'Configuration globale du tenant',
+      'Synchronisation Active Directory vers Entra ID',
+      'Migration fluide des boîtes aux lettres'
     ],
-    tech: ['M365', 'Exchange', 'Entra ID']
+    tech: ['Microsoft 365', 'Exchange Online', 'Entra ID']
   },
   {
-    title: currentLang === 'fr' ? 'Sauvegarde & Résilience Veeam' : 'Veeam Backup & Resilience',
+    title: currentLang === 'fr' ? 'Modernisation de l\'infrastructure de sauvegarde avec Veeam' : 'Backup infrastructure modernization with Veeam',
     icon: 'shield',
-    desc: currentLang === 'fr' ? 'Refonte de la stratégie de sauvegarde et PRA.' : 'Backup and DR strategy overhaul.',
+    desc: currentLang === 'fr' ? 'Amélioration de la fiabilité et des capacités de restauration de l’infrastructure.' : 'Improvement of reliability and infrastructure restore capabilities.',
     achievements: [
-      'Audit et définition de nouveaux SLA',
-      'Déploiement Veeam B&R v12',
-      'Automatisation des tests de restauration'
+      'Audit de l\'existant et définition des stratégies',
+      'Déploiement Veeam Backup & Replication',
+      'Tests de restauration concluants'
     ],
-    tech: ['Veeam', 'VMware', 'Disaster Recovery']
+    tech: ['Veeam Backup & Replication', 'Virtualisation', 'Plan de résilience']
   },
   {
-    title: currentLang === 'fr' ? 'Supervision Zabbix & Grafana' : 'Zabbix & Grafana Monitoring',
+    title: currentLang === 'fr' ? 'Plateforme de supervision Zabbix & Grafana' : 'Zabbix & Grafana monitoring platform',
     icon: 'activity',
-    desc: currentLang === 'fr' ? 'Anticipation proactive des incidents cloud & on-prem.' : 'Proactive incident anticipation (Cloud & On-prem).',
+    desc: currentLang === 'fr' ? 'Solution centralisée pour anticiper et détecter proactivement les incidents.' : 'Centralized solution to proactively anticipate and detect incidents.',
     achievements: [
-      'Architecture de supervision distribuée',
-      'Dashboards temps réel (Grafana)',
-      'Alerting intelligent (Teams/Mail)'
+      'Architecture complète de supervision',
+      'Mise en place des règles et alertes',
+      'Tableaux de bord sur mesure (Grafana)'
     ],
     tech: ['Zabbix', 'Grafana', 'Linux']
   }
