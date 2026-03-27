@@ -472,7 +472,7 @@ if (contactForm) {
     try {
       // Note: Use Formspree (or replace with your preferred service like EmailJS)
       // Here we use a placeholder endpoint. You can obtain your own at formspree.io
-      const response = await fetch('https://formspree.io/f/mqakdoyv', {
+      const response = await fetch('https://formspree.io/f/mvzvzgpg', {
         method: 'POST',
         body: formData,
         headers: {
