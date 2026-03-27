@@ -454,3 +454,55 @@ document.querySelectorAll('.magnetic-card').forEach((card: any) => {
     }
   });
 });
+
+// --- Contact Form Submission & Feedback ---
+const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalText = submitBtn.innerHTML;
+    
+    // Status tracking for UX
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+
+    const formData = new FormData(contactForm);
+    
+    try {
+      // Note: Use Formspree (or replace with your preferred service like EmailJS)
+      // Here we use a placeholder endpoint. You can obtain your own at formspree.io
+      const response = await fetch('https://formspree.io/f/mqakdoyv', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        submitBtn.innerHTML = currentLang === 'fr' ? 'Message envoyé ! ✅' : 'Message sent! ✅';
+        submitBtn.classList.add('btn-success');
+        contactForm.reset();
+        
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          submitBtn.classList.remove('btn-success');
+        }, 5000);
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = currentLang === 'fr' ? 'Erreur ❌ Réessayez' : 'Error ❌ Try again';
+      submitBtn.classList.add('btn-error');
+      
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.classList.remove('btn-error');
+      }, 3000);
+    }
+  });
+}
+

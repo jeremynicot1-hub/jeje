@@ -241,6 +241,19 @@ h1, h2, h3, h4 { font-family: var(--font-title); font-weight: 600; letter-spacin
 .input-group input, .input-group textarea { background: rgba(0,0,0,0.2); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px; color: var(--text-primary); font-family: var(--font-sans); font-size: 1rem; transition: border-color var(--transition-fast); }
 .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--accent-cyan); background: rgba(0,0,0,0.4); }
 
+.btn-success { background: #10b981 !important; color: #fff !important; border-color: #10b981 !important; }
+.btn-error { background: #ef4444 !important; color: #fff !important; border-color: #ef4444 !important; }
+
+/* Autofill styling fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #0a0a0c inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .footer { border-top: 1px solid var(--border-subtle); padding: 24px 0; margin-top: 80px; }
 .footer-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
 .footer-left { display: flex; flex-direction: column; gap: 4px; }
