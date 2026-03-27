@@ -487,9 +487,6 @@ if (contactForm) {
         const successContainer = document.createElement('div');
         successContainer.className = 'form-success-container';
         successContainer.innerHTML = `
-          <div class="success-icon-wrapper">
-            <i data-lucide="check-circle"></i>
-          </div>
           <h3>${currentLang === 'fr' ? 'Message envoyé !' : 'Message Sent!'}</h3>
           <p>${currentLang === 'fr' ? 'Merci pour votre message. Je reviendrai vers vous très rapidement.' : 'Thank you for your message. I will get back to you very soon.'}</p>
           <button class="btn-secondary" id="reset-form" style="width: auto;">
